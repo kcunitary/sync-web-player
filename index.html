@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>yuri-channel</title>
+    <style>
+        body {
+            width: device-width;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-image: url(https://ddns.yao.xz.cn:2017/bocchi/pexels-felix-mittermeier-956999.jpg);
+/*             background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01b7665b8a14efa80120245c4aca63.gif&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663084464&t=0cef73fee1ac020da0c3ccd241f4f92e);
+ */            background-size: cover;
+            background-repeat: auto;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .main {
+            width: device-width;
+            margin: auto;
+        }
+
+        .header,
+        .nav,
+        .container,
+        .footer {
+            float: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            padding: 52%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .lside {
+            width: 70vw;
+            float: left;
+        }
+
+        .rside {
+            width: 20vw;
+            float: right;
+            
+        }
+
+        .content {
+            margin: 0px (device-width-500)/px;
+        }
+
+        .lside,
+        .rside,
+        .content {
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            padding: 10px;
+            text-align: center;
+        }
+        .white-text{
+            color: #fff;
+        }
+        #joinpage {
+            float: left;
+            position: relative;
+            width: 30vw;
+            height: 40vh;
+            background: inherit;
+            margin: 50px auto;
+            padding: 5vmin;
+            border-radius: 5px;
+        }
+
+        #joinform {
+            float: left;
+        }
+
+        #roominput {
+            border: none;
+            padding: 1rem;
+            flex-grow: 1;
+            border-radius: 3rem;
+            margin: 1rem;
+            text-align: center;
+            background-color: cornflowerblue;
+
+        }
+
+        #nameinput {
+            border: none;
+            padding: 1rem;
+            flex-grow: 1;
+            border-radius: 3rem;
+            margin: 1rem;
+            text-align: center;
+            background-color: cornflowerblue;
+        }
+
+        #joinform>button {
+            text-align: center;
+            background-color: cornflowerblue;
+            border: none;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 4rem;
+            outline: none;
+            color: #fff
+        }
+
+        #urlform {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        #goinput {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        #urlform>button {
+            background: cornflowerblue;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+        }
+
+        #form {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+
+        #input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
+
+        #input:focus {
+            outline: none;
+        }
+
+        #form>button {
+            background: cornflowerblue;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+        }
+
+        @media screen and (max-width:device-width) {
+
+            .lside,
+            .rside,
+            .content {
+                width: device-width;
+                margin: 0px;
+            }
+        }
+    </style>
+    <meta name="viewport" content="width = device-width， initial-scale = 1.0">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header" id="joinpage">
+            <form id="joinform" action="">
+                <h1 style="color: white;">百合频道</h1>
+                <p><input id="roominput" placeholder="亲！请输入房间名" autocomplete="off" /></p>
+                <p><input id="nameinput" placeholder="亲！请输入用户名" autocomplete="off" /></p>
+                <button id="join">加入房间</button>
+                <h4 style="color: white;">建议：微信、IE等浏览器不可用，使用谷歌、火狐等主流浏览器体验最佳！</h4>
+                <h4 style="color: white;">免责声明：本站所有视频均来自外部引用，不存储不制作任何视频！</h4>
+            </form>
+        </div>
+        <div class="nav" id="urlpage" style="display: none;">
+            <form id="urlform" action="">
+                <input id="urlinput" autocomplete="off" style="display: none;" />
+                <input id="goinput" autocomplete="off" placeholder="请输入有效的视频解析链接或流媒体直链" style="display: none;" />
+                <button id="addurl">
+                    <h1>+</h1>
+                </button>
+                <button id="ok" style="display: none;">确 定</button>
+                <button id="off" style="display: none;">取 消</button>
+            </form>
+        </div>
+        <div class="container" id="activepage" style="display: none;">
+            <div class="lside" id="dplayer" style="display: none;"></div>
+            <div class="rside" id="rsidepage">
+                <h3 style="text-align: left; color:cornflowerblue;">【系统消息】</h3>
+                <div class="user-record card-content white-text"></div>
+            </div>
+            <div class="content" id="contentpage">
+                <h3 style="text-align: left; color:cornflowerblue;">【聊天消息】</h3>
+                <div class="chat-record card-content white-text"></div>
+            </div>
+        </div>
+        <div class="footer" id="sendpage" style="display: none;">
+            <form id="form" action="">
+                <input id="input" placeholder="消 息 内 容" autocomplete="off" /><button>发 送 消 息</button>
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.2.0/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@1.6.2/dist/flv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>
+
+    <script>
+
+
+        const socket = io()
+        const addview = document.querySelector('#addurl')
+        const okview = document.querySelector('#ok')
+        const offview = document.querySelector('#off')
+        const joinpage = document.querySelector('#joinpage')
+        const urlpage = document.querySelector('#urlpage')
+        const urlinputview = document.querySelector('#goinput')
+        const activepage = document.querySelector('#activepage')
+        const sendpage = document.querySelector('#sendpage')
+        const dplayer = document.querySelector('#dplayer')
+        const joinform = document.getElementById('joinform')
+        const userRecord = document.querySelector('.user-record')
+        const chatRecord = document.querySelector('.chat-record')
+        var roominput = document.getElementById('roominput')
+        var nameinput = document.getElementById('nameinput')
+        var urlform = document.getElementById('urlform')
+        var urlinput = document.getElementById('urlinput')
+        var goinput = document.getElementById('goinput')
+        var form = document.getElementById('form')
+        var input = document.getElementById('input')
+        var videotime = null
+        var dptype = 'auto'
+/*         urlinput.value = 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni4934e7b/c4d93960-5643-11eb-a16f-5b3e54966275.m3u8'
+ */
+        const dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: false,
+            lang: 'zh-cn',
+            preload: 'auto',
+            theme: '#d4550c',
+            volume: 0.7,
+            video: {
+                url: urlinput.value,
+                type: 'hls'
+            },
+            highlight: [
+                {
+                    time: 1800,
+                    text: '这是第 30 分钟',
+                },
+                {
+                    time: 3600,
+                    text: '这是第 60 分钟',
+                },
+                {
+                    time: 5400,
+                    text: '这是第 90 分钟',
+                },
+                {
+                    time: 7200,
+                    text: '这是第 120 分钟',
+                },
+                {
+                    time: 9000,
+                    text: '这是第 150 分钟',
+                },
+                {
+                    time: 10800,
+                    text: '这是第 180 分钟',
+                },
+                {
+                    time: 12600,
+                    text: '这是第 210 分钟',
+                },
+            ],
+        })
+        var isMobile = !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/);
+        if (isMobile) {
+            //全屏事件
+            dp.on('fullscreen',function() {
+                screen.orientation.lock("landscape");
+            });
+            //退出全屏事件
+            dp.on('fullscreen_cancel',function() {
+                screen.orientation.unlock();
+            });
+        }
+        //填入房间名和用户名
+        joinform.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (roominput.value && nameinput.value) {
+                var arr = [socket.id, nameinput.value]
+                socket.emit('room message', roominput.value);
+                socket.emit('name message', arr);
+                // 隐藏加入房间页面
+                joinpage.style.display = 'none'
+                // 显示活动页面
+                urlpage.style.display = 'block'
+                activepage.style.display = 'block'
+                sendpage.style.display = 'block'
+            }
+        })
+        //0秒自动播放
+        // dp.on('abort', () => {
+        //     dp.play()
+        // })
+        socket.on('name message', function (msg) {
+            const item = document.createElement('li')
+            item.textContent = `🔈 ${msg}加入房间📽`
+            userRecord.insertBefore(item, userRecord.lastChild)
+            setTimeout(() => {
+                userRecord.removeChild(userRecord.lastChild)
+            }, 3000)
+        })
+        // 广播退出用户
+        socket.on('outroom', function (msg) {
+            const item = document.createElement('li')
+            item.textContent = `🔈 ${msg}退出房间📽`
+            userRecord.insertBefore(item, userRecord.lastChild)
+            setTimeout(() => {
+                userRecord.removeChild(userRecord.lastChild)
+            }, 3000)
+        })
+        //发送聊天消息
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            if (input.value) {
+                var arr = [socket.id, input.value]
+                socket.emit('chat message', arr)
+                input.value = ''
+            }
+        })
+        socket.on('chat message', function (msg) {
+            const item = document.createElement('li')
+            item.textContent = `👤[${msg[2]}]：${msg[1]}`
+            chatRecord.insertBefore(item, chatRecord.lastChild)
+            if (chatRecord.querySelectorAll('li').length > 4) {
+                chatRecord.removeChild(chatRecord.firstChild)
+            }
+        })
+        //点击取消控件变化
+        offview.addEventListener('click', function (e) {
+            e.preventDefault()
+            okview.style.display = 'none'
+            offview.style.display = 'none'
+            urlinputview.style.display = 'none'
+            addview.style.display = 'block'
+        })
+        //点击+控件变化
+        addview.addEventListener('click', function (e) {
+            e.preventDefault()
+            okview.style.display = 'block'
+            offview.style.display = 'block'
+            urlinputview.style.display = 'block'
+            addview.style.display = 'none'
+        })
+        //输入视频地址
+        okview.addEventListener('click', function (e) {
+            e.preventDefault()
+            if (goinput.value && goinput.value != urlinput.value) {
+                urlinput.value = goinput.value
+                socket.emit('url message', urlinput.value)
+            }
+        })
+        socket.on('url message', function (msg) {
+            if (msg.indexOf('http') != -1) {
+                var urlarr = msg.split('.')
+                if (urlarr[urlarr.length - 1] === 'm3u8') {
+                    dptype = 'hls'
+                } else if (urlarr[urlarr.length - 1] === 'mpd') {
+                    dptype = 'dash'
+                }
+                else if (urlarr[urlarr.length - 1] === 'flv') {
+                    dptype = 'flv'
+                } else {
+                    dptype = 'auto'
+                }
+                //点击确认控件变化
+                okview.style.display = 'none'
+                offview.style.display = 'none'
+                urlinputview.style.display = 'none'
+                addview.style.display = 'block'
+                goinput.value = ''
+                dp.switchVideo(
+                    {
+                        url: msg,
+                        type: dptype
+                    }
+                )
+                setTimeout(dp.seek(0.1), 3000)
+                dp.play()
+            } else {
+                const item = document.createElement('li')
+                item.textContent = `🔈 该视频无法播放！`
+                userRecord.insertBefore(item, userRecord.lastChild)
+                setTimeout(() => {
+                    userRecord.removeChild(userRecord.lastChild)
+                }, 3000)
+            }
+
+        })
+        dp.on('timeupdate', () => {
+            var arr = [urlinput.value, dp.video.currentTime, dp.video.duration, dp.video.paused]
+            socket.emit('timeupdate', arr);
+            if (dp.video.currentTime == dp.video.duration) {
+                dplayer.style.display = 'none'
+            }
+
+        })
+        //新用户加入，视频同步到其他在线用户
+        socket.on('connection', (msg) => {
+            urlinput.value = msg[0]
+            if (dp.video.currentTime == 0) {
+                var urlarr = msg[0].split('.')
+                if (urlarr[urlarr.length - 1] === 'm3u8') {
+                    dptype = 'hls'
+                } else if (urlarr[urlarr.length - 1] === 'mpd') {
+                    dptype = 'dash'
+                }
+                else if (urlarr[urlarr.length - 1] === 'flv') {
+                    dptype = 'flv'
+                } else {
+                    dptype = 'auto'
+                }
+                dplayer.style.display = 'block'
+                dp.switchVideo(
+                    {
+                        url: msg[0],
+                        type: dptype
+                    }
+                )
+                dp.seek(msg[1])
+                dp.play()
+            }
+        })
+        //播放同步
+        dp.on('play', () => {
+            dplayer.style.display = 'block'
+            socket.emit('play', dp.video.paused)
+        })
+        socket.on('play', (msg) => {
+            if (!msg) {
+                dp.play()
+            }
+        })
+        //暂停同步
+        dp.on('pause', () => {
+            socket.emit('pause', dp.video.paused)
+        })
+        socket.on('pause', (msg) => {
+            if (msg) {
+                dp.pause()
+            }
+        })
+        //拖动进度同步
+        dp.on('seeking', () => {
+            socket.emit('seeking', dp.video.currentTime)
+        })
+        socket.on('seeking', (msg) => {
+            if (videotime != msg && dp.video.currentTime != dp.video.duration && dp.video.duration != null) {
+                dp.seek(msg)
+                videotime = dp.video.currentTime
+            } else {
+                return
+            }
+        })
+    </script>
+</body>
+
+</html>
